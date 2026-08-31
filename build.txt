@@ -1,0 +1,3 @@
+displayName = First Scriptures
+author = Saphient
+version = 0.1

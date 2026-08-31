@@ -1,0 +1,139 @@
+# This file will automatically update with entries for new content after a build and reload.
+# Please read https://github.com/tModLoader/tModLoader/wiki/Localization to learn more about localization and these files.
+
+Items: {
+	testgun: {
+		DisplayName: testgun
+		Tooltip:
+			'''
+			Template of an item
+			Replacing this tooltip is duty 
+			It's snowing on Mt.Fuji
+			'''
+	}
+
+	diamondsword: {
+		DisplayName: Diamond Sword
+		Tooltip:
+			'''
+			Made of shiny blue gems, yet somehow worse than a flaming sword made of hell-metal.
+			Did someone bring the wrong game's recipe book to the anvil?
+			'''
+	}
+
+	corep90: {
+		DisplayName: Core-Line P90
+		Tooltip:
+			'''
+			33% chance to save ammo
+			It costs $400,000 to fire this weapon... for twelve seconds.
+			Wait, wrong gun. This one actually just runs on cheap gunpowder and sheer optimism.
+			'''
+	}
+
+	photonaccelerator: {
+		DisplayName: Photon Accelerator
+		Tooltip:
+			'''
+			25% chance to save ammo
+			Upgraded with reinforced alloy and precision servos for only $1,999!
+			Dark goggles highly recommended. (Manufacturer is not liable for melted barrels).
+			'''
+	}
+
+	redlinedvector: {
+		DisplayName: Redlined Vector
+		Tooltip:
+			'''
+			25% chance to save ammo
+			The engineers said, 'This violates basic safety regulations.'
+			So we fired the engineers and added another battery pack. Shoot away!
+			'''
+	}
+
+	surgearray: {
+		DisplayName: Surge Array
+		Tooltip:
+			'''
+			10% chance to save ammo
+			[c/FF3333:Efficiency was completely ignored during manufacturing.]
+			Congratulations! You hold a portable bullet dispenser.
+			Please refrain from shooting the floor, unless you enjoy explaining your severe hearing loss to the doctor.
+			'''
+	}
+
+	sparknlead: {
+		DisplayName: Spark & Lead
+		Tooltip:
+			'''
+			Fires a salvo of lead
+			Spreads bullets evenly across a smaller cone
+			The engineers spent six months perfecting the spread math.
+			'''
+	}
+
+	dragkoon: {
+		DisplayName: Dragkoon
+		Tooltip:
+			'''
+			Fires a salvo of lead
+			Spreads bullets evenly across a smaller cone
+			"Is it precise?" Not even a little.
+			"Will it hit the target?" Along with the wall, the floor, the trees, and three neighboring postcodes.
+			'''
+	}
+
+	CustomTerraprisma: {
+		DisplayName: Custom Terraprisma
+		Tooltip: ""
+	}
+
+	havoc: {
+		DisplayName: havoc
+		Tooltip: ""
+	}
+
+	novamalevolence: {
+		DisplayName: novamalevolence
+		Tooltip: ""
+	}
+
+	ramp: {
+		DisplayName: ramp
+		Tooltip: ""
+	}
+
+	testgun3: {
+		DisplayName: testgun3
+		Tooltip: ""
+	}
+
+	testgun5: {
+		DisplayName: testgun5
+		Tooltip: ""
+	}
+
+	ArmorForgeToken: {
+		Tooltip: ""
+		DisplayName: Armor Forge Token
+	}
+
+	ArmorReforgeKit: {
+		Tooltip: ""
+		DisplayName: Armor Reforge Kit
+	}
+}
+
+Buffs: {
+	CustomTerraprismaBuff: {
+		DisplayName: Custom Terraprisma Buff
+		Description: Mods.LegacyScriptures.Buffs.CustomTerraprismaBuff.Description
+	}
+}
+
+Projectiles: {
+	CustomLaserBeam.DisplayName: Custom Laser Beam
+	CustomTerraprismaProj.DisplayName: Custom Terraprisma Proj
+}
+
+Prefixes.CustomArmorPrefix.DisplayName: Custom Armor Prefix
