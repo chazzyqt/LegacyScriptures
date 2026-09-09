@@ -83,18 +83,23 @@ Items: {
 			'''
 	}
 
+	ArmorReforgeKit: {
+		DisplayName: Armor Reforge Kit
+		Tooltip: ""
+	}
+
 	CustomTerraprisma: {
 		DisplayName: Custom Terraprisma
 		Tooltip: ""
 	}
 
 	havoc: {
-		DisplayName: havoc
+		DisplayName: Havoc
 		Tooltip: ""
 	}
 
 	novamalevolence: {
-		DisplayName: novamalevolence
+		DisplayName: Nova's Malevolence
 		Tooltip: ""
 	}
 
@@ -112,16 +117,6 @@ Items: {
 		DisplayName: testgun5
 		Tooltip: ""
 	}
-
-	ArmorForgeToken: {
-		Tooltip: ""
-		DisplayName: Armor Forge Token
-	}
-
-	ArmorReforgeKit: {
-		Tooltip: ""
-		DisplayName: Armor Reforge Kit
-	}
 }
 
 Buffs: {
@@ -135,5 +130,3 @@ Projectiles: {
 	CustomLaserBeam.DisplayName: Custom Laser Beam
 	CustomTerraprismaProj.DisplayName: Custom Terraprisma Proj
 }
-
-Prefixes.CustomArmorPrefix.DisplayName: Custom Armor Prefix
