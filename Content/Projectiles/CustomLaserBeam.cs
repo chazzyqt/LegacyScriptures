@@ -25,7 +25,7 @@ namespace LegacyScriptures.Content.Projectiles
             Projectile.ignoreWater = true;
 
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 2; 
+            Projectile.localNPCHitCooldown = 5; 
         }
 
         public override void AI()
