@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 
 namespace LegacyScriptures.Content.Projectiles
 {
-    public class CustomLaserBeam : ModProjectile
+    public class heatflarebeam : ModProjectile
     {
         private const float max_laser_dist = 1600f;
         private const float laserpos_x = 55f; 
@@ -115,9 +115,9 @@ namespace LegacyScriptures.Content.Projectiles
             if (Projectile.velocity == Vector2.Zero || Projectile.ai[0] <= 10f)
                 return false;
 
-            Texture2D startTex = ModContent.Request<Texture2D>("LegacyScriptures/Content/Projectiles/CustomLaserBeam_Start").Value;
-            Texture2D middleTex = ModContent.Request<Texture2D>("LegacyScriptures/Content/Projectiles/CustomLaserBeam_Middle").Value;
-            Texture2D endTex = ModContent.Request<Texture2D>("LegacyScriptures/Content/Projectiles/CustomLaserBeam_End").Value;
+            Texture2D startTex = ModContent.Request<Texture2D>("LegacyScriptures/Content/Projectiles/heatflarebeam_Start").Value;
+            Texture2D middleTex = ModContent.Request<Texture2D>("LegacyScriptures/Content/Projectiles/heatflarebeam_Middle").Value;
+            Texture2D endTex = ModContent.Request<Texture2D>("LegacyScriptures/Content/Projectiles/heatflarebeam_End").Value;
 
             Vector2 drawPosition = Projectile.Center - Main.screenPosition;
             Vector2 unitDirection = Projectile.velocity;
