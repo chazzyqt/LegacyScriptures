@@ -10,6 +10,9 @@ namespace LegacyScriptures.Content.Items
 {
 	public class havoc : ModItem
 	{
+        public static readonly int MaxRampFrames = 300; // 60 = 1 second
+        public static readonly float MaxDamageMultiplier = 2.0f;
+
 		public override void SetStaticDefaults()
 		{
 			glowMaskAddon.AddGlowMask(Item.type, "LegacyScriptures/Content/Items/havoc_glow");
@@ -17,22 +20,22 @@ namespace LegacyScriptures.Content.Items
 
 		public override void SetDefaults()
 		{
-			Item.damage = 4;
+			Item.damage = 24;
 			Item.DamageType = DamageClass.Ranged;
-			Item.crit = -2;
+			Item.crit = -1;
 			Item.noMelee = true;
 
 			Item.width = 40;
 			Item.height = 20;
 			Item.scale = 1.3f;
 
-			Item.useTime = 6;
-			Item.useAnimation = 6;
+			Item.useTime = 4;
+			Item.useAnimation = 4;
 
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.knockBack = 0;
 			Item.value = Item.buyPrice(silver: 1);
-			Item.rare = ItemRarityID.Blue;
+			Item.rare = ItemRarityID.Cyan;
 			Item.UseSound = SoundID.Item11 with { Volume = 0.3f };
 			Item.autoReuse = true;
 
@@ -56,7 +59,7 @@ namespace LegacyScriptures.Content.Items
 
 		public override bool CanConsumeAmmo(Item ammo, Player player)
 		{
-			return Main.rand.NextFloat() >= 0.33f;
+			return Main.rand.NextFloat() >= 0.15f;
 		}
 
 		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
@@ -67,6 +70,12 @@ namespace LegacyScriptures.Content.Items
 			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0)) {
 				position += muzzleOffset;
 			}
+
+			//Dynamic damage ramp calculation            
+            var rampPlayer = player.GetModPlayer<RampUpPlayer>();
+            float rampProgress = System.Math.Min((float)rampPlayer.firingTimer / MaxRampFrames, 1.0f);
+            float currentMultiplier = MathHelper.Lerp(1.0f, MaxDamageMultiplier, rampProgress);
+            damage = (int)(damage * currentMultiplier);
 		}
 
 		public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
@@ -75,4 +84,23 @@ namespace LegacyScriptures.Content.Items
             return true;
         }
 	}
+
+	public class RampUpPlayer : ModPlayer
+    {
+        public int firingTimer;
+
+        public override void PreUpdate()
+        {
+            // If the player is actively swinging/shooting ANY weapon, increment the timer.
+            // Otherwise, reset it back to 0.
+            if (Player.itemAnimation > 0)
+            {
+                firingTimer++;
+            }
+            else
+            {
+                firingTimer = 0;
+            }
+        }
+    }
 }

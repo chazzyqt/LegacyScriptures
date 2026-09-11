@@ -140,4 +140,5 @@ Projectiles: {
 	CustomLaserBeam.DisplayName: Custom Laser Beam
 	CustomTerraprismaProj.DisplayName: Custom Terraprisma Proj
 	testflarelaser.DisplayName: testflarelaser
+	heatflarebeam.DisplayName: heatflarebeam
 }
