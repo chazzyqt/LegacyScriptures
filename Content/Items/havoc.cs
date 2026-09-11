@@ -10,8 +10,8 @@ namespace LegacyScriptures.Content.Items
 {
 	public class havoc : ModItem
 	{
-        public static readonly int MaxRampFrames = 300; // 60 = 1 second
-        public static readonly float MaxDamageMultiplier = 2.0f;
+        public static readonly int MaxRampFrames = 600; // 60 = 1 second
+        public static readonly float MaxDamageMultiplier = 3.0f;
 
 		public override void SetStaticDefaults()
 		{
