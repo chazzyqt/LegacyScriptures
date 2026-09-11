@@ -117,6 +117,11 @@ Items: {
 		DisplayName: Heatflare
 		Tooltip: ""
 	}
+
+	testgunlaser: {
+		Tooltip: ""
+		DisplayName: testgunlaser
+	}
 }
 
 Buffs: {
