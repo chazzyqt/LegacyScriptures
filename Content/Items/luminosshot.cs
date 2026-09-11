@@ -14,7 +14,7 @@ namespace LegacyScriptures.Content.Items
 		{
 			Item.damage = 32;
 			Item.DamageType = DamageClass.Ranged;
-			Item.crit = -2;
+			Item.crit = 3;
 			Item.noMelee = true;
 
 			Item.width = 40;
@@ -26,7 +26,7 @@ namespace LegacyScriptures.Content.Items
 
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.knockBack = 0;
-			Item.value = Item.buyPrice(silver: 1);
+			Item.value = Item.buyPrice(gold: 10);
 			Item.rare = ItemRarityID.Cyan;
 			Item.UseSound = SoundID.Item11 with { Volume = 0.3f };
 			Item.autoReuse = true;
