@@ -10,7 +10,7 @@ using LegacyScriptures.Content.Projectiles; // Added import for custom projectil
 
 namespace LegacyScriptures.Content.Items
 {
-    public class testgun5 : ModItem
+    public class heatflare : ModItem
     {
         private int bulletTimer = 0;
 

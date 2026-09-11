@@ -90,7 +90,7 @@ Items: {
 
 	CustomTerraprisma: {
 		DisplayName: Custom Terraprisma
-		Tooltip: ""
+		Tooltip: Dont expect the swords to be in formation.
 	}
 
 	havoc: {
@@ -108,13 +108,13 @@ Items: {
 		Tooltip: ""
 	}
 
-	testgun3: {
-		DisplayName: testgun3
+	luminosshot: {
+		DisplayName: Luminos Shot
 		Tooltip: ""
 	}
 
-	testgun5: {
-		DisplayName: testgun5
+	heatflare: {
+		DisplayName: Heatflare
 		Tooltip: ""
 	}
 }
