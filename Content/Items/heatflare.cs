@@ -6,7 +6,7 @@ using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-using LegacyScriptures.Content.Projectiles; // Added import for custom projectile
+using LegacyScriptures.Content.Projectiles;
 
 namespace LegacyScriptures.Content.Items
 {
@@ -16,7 +16,6 @@ namespace LegacyScriptures.Content.Items
 
         public override void SetDefaults()
         {
-            // Boosted Stats
             Item.damage = 4; 
             Item.DamageType = DamageClass.Ranged;
             Item.crit = 8;
@@ -36,10 +35,10 @@ namespace LegacyScriptures.Content.Items
             Item.UseSound = SoundID.Item91 with { Volume = 0.15f, Pitch = -0.7f };
             Item.autoReuse = true;
 
-            // Channeled Laser Configuration
             Item.channel = true; 
             Item.noUseGraphic = false; 
-            Item.shoot = ProjectileID.LastPrism; 
+            //Item.shoot = ProjectileID.LastPrism; 
+			Item.shoot = ProjectileID.PurificationPowder;
             Item.shootSpeed = 19f;
             Item.useAmmo = AmmoID.Bullet;
         }
@@ -66,59 +65,35 @@ namespace LegacyScriptures.Content.Items
 		{
 			int laserType = ModContent.ProjectileType<CustomLaserBeam>();
 
-			// 1. Spawn the laser if it isn't already active
 			if (player.ownedProjectileCounts[laserType] < 1)
 			{
-				Projectile laser = Projectile.NewProjectileDirect(
-					source,
-					position,
-					velocity,
-					laserType,
+				Projectile laser = Projectile.NewProjectileDirect(source, position, velocity, laserType,
 					(int)(damage * 1.5f),
-					knockback * 1.5f,
-					player.whoAmI
+					knockback * 1.5f, player.whoAmI
 				);
-
 				laser.DamageType = DamageClass.Ranged;
 			}
 
-			// 2. Fire the actual ammo projectile (like Luminite Bullets) every time the weapon updates/shoots
-			// (If you only want bullets to fire at a specific rate while holding, you can add a timer, 
-			// but this fires them according to your item's UseSpeed/UseTime)
-			Projectile.NewProjectile(
-				source,
-				position,
-				velocity,
-				type, // This is the ID of the ammo the player is using (e.g., Luminite Bullet)
-				damage,
-				knockback,
-				player.whoAmI
-			);
+			Projectile.NewProjectile(source, position, velocity, type, damage, knockback, player.whoAmI);
 
-			// Return false so Terraria doesn't spawn a duplicate default bullet on top of your custom ones
 			return false;
 		}
 
         public override void HoldItem(Player player)
 		{
-			// Check if the player is actively channeling (holding down click)
 			if (player.channel && Main.myPlayer == player.whoAmI)
 			{
 				bulletTimer++;
 
-				// Fire bullets every 4 ticks (matches useTime)
 				if (bulletTimer >= Item.useTime)
 				{
 					bulletTimer = 0;
 
-					// Get weapon origin position and target velocity
 					Vector2 position = player.MountedCenter;
 					Vector2 velocity = Vector2.Normalize(Main.MouseWorld - position) * Item.shootSpeed;
 
-					// Apply inaccuracy
 					velocity = velocity.RotatedByRandom(MathHelper.ToRadians(1f));
 
-					// Check for ammo and find ammo projectile type
 					if (player.HasAmmo(Item))
 					{
 						player.PickAmmo(Item, out int projToShoot, out float speed, out int damage, out float knockback, out int usedAmmoItemId);
@@ -127,10 +102,8 @@ namespace LegacyScriptures.Content.Items
 						float rotation = MathHelper.ToRadians(0.33f);
 						Vector2 spawnPosition = position + Vector2.Normalize(velocity) * 45f;
 
-						// FIX: Use player.GetSource_ItemUse(Item) to generate a valid EntitySource
 						var source = player.GetSource_ItemUse(Item);
 
-						// Fire the 3-bullet spread
 						for (int i = 0; i < numberProjectiles; i++)
 						{
 							float angleOffset = -rotation + (rotation * 2f * i / (numberProjectiles - 1));
@@ -139,7 +112,6 @@ namespace LegacyScriptures.Content.Items
 							Projectile.NewProjectile(source, spawnPosition, perturbedSpeed, projToShoot, damage, knockback, player.whoAmI);
 						}
 
-						// Play the gunshot sound
 						SoundEngine.PlaySound(Item.UseSound, player.position);
 					}
 				}
@@ -152,7 +124,7 @@ namespace LegacyScriptures.Content.Items
 
 		public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
         {
-            scale *= 1.5f; // 0.5 = half size, 2.0f = double size
+            scale *= 1.5f;
             return true;
         }
     }

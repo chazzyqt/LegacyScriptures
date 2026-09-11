@@ -10,24 +10,22 @@ namespace LegacyScriptures.Content.Projectiles
 {
     public class CustomLaserBeam : ModProjectile
     {
-        private const float MAX_DISTANCE = 1600f;
-        private const float OFFSET_X = 55f; // X: Higher = move Right, Lower = move Left
-        private const float OFFSET_Y = -5f; // Y: Higher = move Down, Lower = move Up
+        private const float max_laser_dist = 1600f;
+        private const float laserpos_x = 55f; 
+        private const float laserpos_y = -5f; 
 
         public override void SetDefaults()
         {
-            Projectile.width = 26;
-            Projectile.height = 26;
+            Projectile.width = 20;
+            Projectile.height = 20;
             Projectile.friendly = true;
             Projectile.penetrate = -1;
             Projectile.tileCollide = false;
             Projectile.DamageType = DamageClass.Ranged;
             Projectile.ignoreWater = true;
 
-            // --- FIX FOR IFRAME CONFLICTS ---
-            // This makes the laser track immunity per-NPC independently using a local timer instead of global IFrames
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 2; //10; Hits the same enemy once every 10 frames (adjust lower for faster hits, higher to leave room for bullets)
+            Projectile.localNPCHitCooldown = 2; 
         }
 
         public override void AI()
@@ -42,89 +40,67 @@ namespace LegacyScriptures.Content.Projectiles
 
             Projectile.timeLeft = 2;
 
-            // --- CHARGE-UP ANIMATION LOGIC ---
-            // 60 ticks = 1 second delay
-            const float chargeTime = 60f; //60f
-            if (Projectile.ai[1] < chargeTime)
-            {
-                Projectile.ai[1] += 1f; // Increment charge timer
-            }
-            
-            // Calculate charge percentage from 0.0 (empty/thin) to 1.0 (fully charged)
-            float chargeProgress = MathHelper.Clamp(Projectile.ai[1] / chargeTime, 0f, 1f);
-            // Smooth out the scaling curve using Sine (starts slow, speeds up, eases out)
-            float currentScale = (float)Math.Sin(chargeProgress * MathHelper.PiOver2);
-
-            // Pass the scaling factor to ai[2] so PreDraw can use it
-            Projectile.ai[2] = currentScale;
-
-            // If still charging, you can choose to disable collision/damage until it's fully grown
-            // (Optional: remove this check if you want it to deal damage immediately while charging)
-            if (chargeProgress < 1f)
-            {
-                // Optional: you can spawn charging dust here around the player/muzzle
-            }
-
             Vector2 aimDir = Vector2.Normalize(Main.MouseWorld - player.MountedCenter);
             Vector2 perpendicular = new Vector2(-aimDir.Y, aimDir.X);
             
-            float currentOffsetY = (player.direction == -1) ? -OFFSET_Y : OFFSET_Y;
-            Vector2 startPos = player.MountedCenter + (aimDir * OFFSET_X) + (perpendicular * currentOffsetY);
+            float currentOffsetY = (player.direction == -1) ? -laserpos_y : laserpos_y;
+            Vector2 startPos = player.MountedCenter + (aimDir * laserpos_x) + (perpendicular * currentOffsetY);
 
             Projectile.Center = startPos;
             Projectile.velocity = aimDir;
             Projectile.rotation = aimDir.ToRotation();
 
-            float laserLength = MAX_DISTANCE;
+            float targetLaserLength = max_laser_dist;
             bool hitTile = false;
 
-            for (float d = 0f; d < MAX_DISTANCE; d += 16f)
+            for (float d = 0f; d < max_laser_dist; d += 16f)
             {
                 Vector2 checkPos = startPos + aimDir * d;
                 if (!Collision.CanHitLine(startPos, 1, 1, checkPos, 1, 1))
                 {
-                    laserLength = d;
+                    targetLaserLength = d;
                     hitTile = true;
                     break;
                 }
             }
 
+            float extensionSpeed = 150f; // Speed how laser travels
+            
+            Projectile.ai[1] += extensionSpeed;
+
+            float laserLength = Math.Min(Projectile.ai[1], targetLaserLength);
+
             Projectile.ai[0] = laserLength;
 
             Vector2 impactPoint = startPos + aimDir * laserLength;
             
-            // Only deal damage/effects when fully charged (or scale it with charge if you prefer)
-            if (chargeProgress >= 1f)
+            if (hitTile && Projectile.ai[1] >= targetLaserLength)
             {
-                if (hitTile)
+                for (int i = 0; i < 2; i++)
                 {
-                    for (int i = 0; i < 2; i++)
-                    {
-                        Vector2 dustVel = -aimDir.RotatedByRandom(MathHelper.ToRadians(60)) * Main.rand.NextFloat(2f, 5f);
-                        Dust d = Dust.NewDustPerfect(impactPoint, DustID.Electric, dustVel, 100, default, 1.3f);
-                        d.noGravity = true;
-                    }
-
-                    if (Main.rand.NextBool(2))
-                    {
-                        Dust cyanDust = Dust.NewDustPerfect(impactPoint, DustID.SnowflakeIce, -aimDir * 2f, 100, default, 1.5f);
-                        cyanDust.noGravity = true;
-                    }
+                    Vector2 dustVel = -aimDir.RotatedByRandom(MathHelper.ToRadians(60)) * Main.rand.NextFloat(2f, 5f);
+                    Dust d = Dust.NewDustPerfect(impactPoint, DustID.Electric, dustVel, 100, default, 1.3f);
+                    d.noGravity = true;
                 }
 
-                if (Main.rand.NextBool(3))
+                if (Main.rand.NextBool(2))
                 {
-                    Vector2 dustPos = startPos + aimDir * Main.rand.NextFloat(laserLength);
-                    Dust dust = Dust.NewDustPerfect(dustPos, DustID.Electric, aimDir * 1.5f, 100, default, 0.9f);
-                    dust.noGravity = true;
+                    Dust cyanDust = Dust.NewDustPerfect(impactPoint, DustID.SnowflakeIce, -aimDir * 2f, 100, default, 1.5f);
+                    cyanDust.noGravity = true;
                 }
+            }
+
+            if (Main.rand.NextBool(3) && laserLength > 50f)
+            {
+                Vector2 dustPos = startPos + aimDir * Main.rand.NextFloat(laserLength);
+                Dust dust = Dust.NewDustPerfect(dustPos, DustID.Electric, aimDir * 1.5f, 100, default, 0.9f);
+                dust.noGravity = true;
             }
         }
 
-        // Optional: Prevent dealing damage while charging up
-        public override bool ? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
+        public override bool? Colliding(Rectangle projHitbox, Rectangle targetHitbox)
         {
-            if (Projectile.ai[1] < 60f) // If less than 1 second has passed, no collision
+            if (Projectile.ai[0] < 30f)
                 return false;
 
             Vector2 start = Projectile.Center;
@@ -136,7 +112,7 @@ namespace LegacyScriptures.Content.Projectiles
 
         public override bool PreDraw(ref Color lightColor)
         {
-            if (Projectile.velocity == Vector2.Zero)
+            if (Projectile.velocity == Vector2.Zero || Projectile.ai[0] <= 10f)
                 return false;
 
             Texture2D startTex = ModContent.Request<Texture2D>("LegacyScriptures/Content/Projectiles/CustomLaserBeam_Start").Value;
@@ -147,61 +123,20 @@ namespace LegacyScriptures.Content.Projectiles
             Vector2 unitDirection = Projectile.velocity;
             float totalLaserLength = Projectile.ai[0];
             Color beamColor = Color.White;
+            float scaleFactor = 1f;
 
-            // Grab the scaling factor calculated in AI (ranges from 0.0 to 1.0)
-            float scaleFactor = Projectile.ai[2];
-            if (scaleFactor <= 0f)
-                return false; // Don't draw if scale is 0
-
-            // 1. DRAW START CAP (Scale the Y-axis so it grows vertically from a line)
-            Main.EntitySpriteDraw(
-                startTex,
-                drawPosition,
-                null,
-                beamColor,
-                Projectile.rotation,
-                new Vector2(0, startTex.Height / 2f),
-                new Vector2(1f, scaleFactor), // Scales thickness vertically
-                SpriteEffects.None,
-                0
-            );
-
+            Main.EntitySpriteDraw(startTex, drawPosition, null, beamColor, Projectile.rotation, new Vector2(0, startTex.Height / 2f), new Vector2(1f, scaleFactor), SpriteEffects.None, 0); // Draw Start Laser
             float currentDistance = startTex.Width;
 
-            // 2. TILE MIDDLE SEGMENT
             while (currentDistance < totalLaserLength - endTex.Width)
             {
                 Vector2 bodyPos = drawPosition + unitDirection * currentDistance;
-
-                Main.EntitySpriteDraw(
-                    middleTex,
-                    bodyPos,
-                    null,
-                    beamColor,
-                    Projectile.rotation,
-                    new Vector2(0, middleTex.Height / 2f),
-                    new Vector2(1f, scaleFactor), // Scales thickness vertically
-                    SpriteEffects.None,
-                    0
-                );
-
+                Main.EntitySpriteDraw(middleTex, bodyPos, null, beamColor, Projectile.rotation, new Vector2(0, middleTex.Height / 2f), new Vector2(1f, scaleFactor), SpriteEffects.None, 0); // Draw Middle Laser
                 currentDistance += middleTex.Width;
             }
 
-            // 3. DRAW END CAP
-            Vector2 endPos = drawPosition + unitDirection * (totalLaserLength - endTex.Width);
-
-            Main.EntitySpriteDraw(
-                endTex,
-                endPos,
-                null,
-                beamColor,
-                Projectile.rotation,
-                new Vector2(0, endTex.Height / 2f),
-                new Vector2(1f, scaleFactor), // Scales thickness vertically
-                SpriteEffects.None,
-                0
-            );
+            Vector2 endPos = drawPosition + unitDirection * Math.Max(startTex.Width, totalLaserLength - endTex.Width);
+            Main.EntitySpriteDraw(endTex, endPos, null, beamColor, Projectile.rotation, new Vector2(0, endTex.Height / 2f), new Vector2(1f, scaleFactor), SpriteEffects.None, 0); // Draw End Laser
 
             return false;
         }
