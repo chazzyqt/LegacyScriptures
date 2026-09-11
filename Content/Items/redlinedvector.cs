@@ -31,7 +31,7 @@ namespace LegacyScriptures.Content.Items
 
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.knockBack = 1;
-			Item.value = Item.buyPrice(silver: 1);
+			Item.value = Item.buyPrice(gold: 10);
 			Item.rare = ItemRarityID.Cyan;
 			Item.UseSound = SoundID.Item91 with {Volume = 0.15f, Pitch = -0.7f};
 			Item.autoReuse = true;
