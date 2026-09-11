@@ -17,7 +17,7 @@ namespace LegacyScriptures.Content.Items
 
 		public override void SetDefaults()
 		{
-			Item.damage = 35;
+			Item.damage = 37;
 			Item.DamageType = DamageClass.Ranged;
 			Item.crit = 3;
 			Item.noMelee = true;
