@@ -10,6 +10,8 @@ namespace LegacyScriptures.Content.Items
 {
 	public class novamalevolence : ModItem
 	{
+		public static readonly int MaxRampFrames = 900;
+        public static readonly float MaxDamageMultiplier = 7.5f;
 		public override void SetStaticDefaults()
 		{
 			glowMaskAddon.AddGlowMask(Item.type, "LegacyScriptures/Content/Items/novamalevolence_glow");
@@ -17,22 +19,22 @@ namespace LegacyScriptures.Content.Items
 
 		public override void SetDefaults()
 		{
-			Item.damage = 4;
+			Item.damage = 80;
 			Item.DamageType = DamageClass.Ranged;
-			Item.crit = -2;
+			Item.crit = 2;
 			Item.noMelee = true;
 
 			Item.width = 40;
 			Item.height = 20;
 			Item.scale = 1.2f;
 
-			Item.useTime = 6;
-			Item.useAnimation = 6;
+			Item.useTime = 4;
+			Item.useAnimation = 4;
 
 			Item.useStyle = ItemUseStyleID.Shoot;
 			Item.knockBack = 0;
 			Item.value = Item.buyPrice(silver: 1);
-			Item.rare = ItemRarityID.Blue;
+			Item.rare = ItemRarityID.Red;
 			Item.UseSound = SoundID.Item11 with { Volume = 0.3f };
 			Item.autoReuse = true;
 
@@ -56,7 +58,7 @@ namespace LegacyScriptures.Content.Items
 
 		public override bool CanConsumeAmmo(Item ammo, Player player)
 		{
-			return Main.rand.NextFloat() >= 0.33f;
+			return Main.rand.NextFloat() >= 0.10f;
 		}
 
 		public override void ModifyShootStats(Player player, ref Vector2 position, ref Vector2 velocity, ref int type, ref int damage, ref float knockback)
@@ -67,6 +69,11 @@ namespace LegacyScriptures.Content.Items
 			if (Collision.CanHit(position, 0, 0, position + muzzleOffset, 0, 0)) {
 				position += muzzleOffset;
 			}
+         
+            var rampPlayer = player.GetModPlayer<RampUpPlayer>();
+            float rampProgress = System.Math.Min((float)rampPlayer.firingTimer / MaxRampFrames, 1.0f);
+            float currentMultiplier = MathHelper.Lerp(1.0f, MaxDamageMultiplier, rampProgress);
+            damage = (int)(damage * currentMultiplier);
 		}
 
 		public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)
