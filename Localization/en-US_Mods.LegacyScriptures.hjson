@@ -85,7 +85,10 @@ Items: {
 
 	ArmorReforgeKit: {
 		DisplayName: Armor Reforge Kit
-		Tooltip: ""
+		Tooltip: 
+			'''
+			
+			'''
 	}
 
 	CustomTerraprisma: {
@@ -95,37 +98,44 @@ Items: {
 
 	havoc: {
 		DisplayName: Havoc
-		Tooltip: ""
+		Tooltip: 
+			'''
+			15% chance to save ammo
+			Continuously firing this weapon ramps up its damage, up to 3.0x the base damage.
+			Each sustained burst drags the target one step closer to absolute zero.
+			'''
 	}
 
 	novamalevolence: {
 		DisplayName: Nova's Malevolence
-		Tooltip: ""
-	}
-
-	ramp: {
-		DisplayName: ramp
-		Tooltip: ""
+		Tooltip: 
+			'''
+			10% chance to save ammo
+			Continuously firing this weapon ramps up its damage, up to 7.5x the base damage.
+			Born from an absolute vacuum. It starves the air, swallows the light, and leaves nothing behind.
+			'''
 	}
 
 	luminosshot: {
 		DisplayName: Luminos Shot
-		Tooltip: ""
+		Tooltip: 
+			'''
+			33% chance to save ammo
+			Consumes 5 mana per shot to fire an additional laser that deals 75% of the gun's damage.
+			Without mana, it will shoot like a normal gun without the laser.
+			Harnesses a concentrated beam of solar radiance.
+			'''
 	}
 
 	heatflare: {
 		DisplayName: Heatflare
-		Tooltip: ""
-	}
-
-	testgunlaser: {
-		Tooltip: ""
-		DisplayName: testgunlaser
-	}
-
-	testflare: {
-		Tooltip: ""
-		DisplayName: testflare
+		Tooltip: 
+			'''
+			25% chance to save ammo
+			Consumes 10 mana per shot to fire a charged laser beam that deals 150% of the gun's damage.
+			Without mana, it will shoot like a normal gun without the laser.
+			A contained supernova barrel-wrapped for your convenience.
+			'''
 	}
 }
 
@@ -137,8 +147,6 @@ Buffs: {
 }
 
 Projectiles: {
-	CustomLaserBeam.DisplayName: Custom Laser Beam
 	CustomTerraprismaProj.DisplayName: Custom Terraprisma Proj
-	testflarelaser.DisplayName: testflarelaser
 	heatflarebeam.DisplayName: heatflarebeam
 }
