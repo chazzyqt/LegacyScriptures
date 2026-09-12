@@ -5,7 +5,7 @@ using LegacyScriptures.Content.Projectiles;
 
 namespace LegacyScriptures.Content.Buffs
 {
-    public class CustomTerraprismaBuff : ModBuff
+    public class axeoffirsttarnishedBuff : ModBuff
     {
         public override void SetStaticDefaults()
         {
@@ -15,7 +15,7 @@ namespace LegacyScriptures.Content.Buffs
 
         public override void Update(Player player, ref int buffIndex)
         {
-            if (player.ownedProjectileCounts[ProjectileType<CustomTerraprismaProj>()] > 0)
+            if (player.ownedProjectileCounts[ProjectileType<bladesoftarnishedProj>()] > 0)
             {
                 player.buffTime[buffIndex] = 18000;
             }

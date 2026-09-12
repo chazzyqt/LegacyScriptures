@@ -56,7 +56,7 @@ namespace LegacyScriptures.Content.Projectiles
             }
             
             Player player = Main.player[Projectile.owner];
-            if (!player.HasBuff(BuffType<axeoffirsttarnishedBuff>()))
+            if (!player.HasBuff(BuffType<bladesoftarnishedBuff>()))
             {
                 Projectile.Kill();
                 return;
