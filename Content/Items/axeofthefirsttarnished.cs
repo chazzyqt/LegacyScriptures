@@ -31,7 +31,7 @@ namespace LegacyScriptures.Content.Items
             Item.UseSound = SoundID.Item82;
             Item.shoot = ProjectileType<bladesoftarnishedProj>();
             Item.DamageType = DamageClass.Summon;
-            Item.buffType = BuffType<axeoffirsttarnishedBuff>();
+            Item.buffType = BuffType<bladesoftarnishedBuff>();
         }
 
         public override void HoldStyle(Player player, Rectangle heldItemFrame)
