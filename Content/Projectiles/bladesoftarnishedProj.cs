@@ -10,7 +10,7 @@ using LegacyScriptures.Content.Buffs;
 
 namespace LegacyScriptures.Content.Projectiles
 {
-    public class CustomTerraprismaProj : ModProjectile
+    public class bladesoftarnishedProj : ModProjectile
     {
         public bool swordAttackmode = false;
         public bool swordGuardmode => !swordAttackmode;
@@ -56,7 +56,7 @@ namespace LegacyScriptures.Content.Projectiles
             }
             
             Player player = Main.player[Projectile.owner];
-            if (!player.HasBuff(BuffType<CustomTerraprismaBuff>()))
+            if (!player.HasBuff(BuffType<axeoffirsttarnishedBuff>()))
             {
                 Projectile.Kill();
                 return;
@@ -75,18 +75,18 @@ namespace LegacyScriptures.Content.Projectiles
 
             string[] swordTexturePaths = new string[]
             {
-                "LegacyScriptures/Content/Projectiles/CustomTerraprismaProj",
-                "LegacyScriptures/Content/Projectiles/CustomTerraprismaProj_Variant2",
-                "LegacyScriptures/Content/Projectiles/CustomTerraprismaProj_Variant3",
-                "LegacyScriptures/Content/Projectiles/CustomTerraprismaProj_Variant4"
+                "LegacyScriptures/Content/Projectiles/bladesoftarnishedProj",
+                "LegacyScriptures/Content/Projectiles/bladesoftarnishedProj_Variant2",
+                "LegacyScriptures/Content/Projectiles/bladesoftarnishedProj_Variant3",
+                "LegacyScriptures/Content/Projectiles/bladesoftarnishedProj_Variant4"
             };
 
             string[] glowTexturePaths = new string[]
             {
-                "LegacyScriptures/Content/Projectiles/CustomTerraprismaProj_Glow",
-                "LegacyScriptures/Content/Projectiles/CustomTerraprismaProj_Variant2_Glow",
-                "LegacyScriptures/Content/Projectiles/CustomTerraprismaProj_Variant3_Glow",
-                "LegacyScriptures/Content/Projectiles/CustomTerraprismaProj_Variant4_Glow"
+                "LegacyScriptures/Content/Projectiles/bladesoftarnishedProj_Glow",
+                "LegacyScriptures/Content/Projectiles/bladesoftarnishedProj_Variant2_Glow",
+                "LegacyScriptures/Content/Projectiles/bladesoftarnishedProj_Variant3_Glow",
+                "LegacyScriptures/Content/Projectiles/bladesoftarnishedProj_Variant4_Glow"
             };
 
             // Remember the sprite of the projectile instead of cycling
