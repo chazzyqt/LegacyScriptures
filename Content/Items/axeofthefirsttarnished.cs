@@ -12,13 +12,13 @@ namespace LegacyScriptures.Content.Items
     {
         public override void SetDefaults()
         {
-            Item.damage = 150;
+            Item.damage = 368;
             Item.mana = 10;
             Item.noMelee = true;
 
             Item.width = 40;
             Item.height = 40;
-            Item.scale = 1.5f; //0.75f;
+            Item.scale = 1.5f;
             
             Item.useTime = 36;
             Item.useAnimation = 36;
