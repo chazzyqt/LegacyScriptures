@@ -8,7 +8,7 @@ using LegacyScriptures.Content.Buffs;
 
 namespace LegacyScriptures.Content.Items
 {
-    public class CustomTerraprisma : ModItem
+    public class axeofthefirsttarnished : ModItem
     {
         public override void SetDefaults()
         {
@@ -29,9 +29,9 @@ namespace LegacyScriptures.Content.Items
             Item.value = Item.buyPrice(gold: 10);
             Item.rare = ItemRarityID.Red;
             Item.UseSound = SoundID.Item82;
-            Item.shoot = ProjectileType<CustomTerraprismaProj>();
+            Item.shoot = ProjectileType<axeoffirsttarnishedProj>();
             Item.DamageType = DamageClass.Summon;
-            Item.buffType = BuffType<CustomTerraprismaBuff>();
+            Item.buffType = BuffType<axeoffirsttarnishedBuff>();
         }
 
         public override void HoldStyle(Player player, Rectangle heldItemFrame)
