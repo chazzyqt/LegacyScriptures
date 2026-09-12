@@ -70,7 +70,7 @@ namespace LegacyScriptures.Content.Items
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-			int manaCost = 2;
+			int manaCost = 5;
 			if (player.CheckMana(manaCost, pay: true))
     		{
 				int laserType = ProjectileID.LaserMachinegunLaser;
