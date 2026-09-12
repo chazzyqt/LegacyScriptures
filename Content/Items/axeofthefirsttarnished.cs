@@ -34,6 +34,20 @@ namespace LegacyScriptures.Content.Items
             Item.buffType = BuffType<bladesoftarnishedBuff>();
         }
 
+        public override void AddRecipes()
+        {
+            Recipe recipe = CreateRecipe();
+			recipe.AddIngredient(ItemID.EmpressBlade, 1);
+			recipe.AddIngredient(ItemID.BrokenHeroSword, 5);
+			recipe.AddIngredient(ItemID.LunarBar, 12);
+			recipe.AddIngredient(ItemID.SoulofMight, 12);
+			recipe.AddIngredient(ItemID.Ectoplasm, 15);
+			recipe.AddIngredient(ItemID.FragmentSolar, 15);
+			recipe.AddIngredient(ItemID.FragmentStardust, 30);
+			recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.Register();
+        }
+
         public override void HoldStyle(Player player, Rectangle heldItemFrame)
         {
             player.itemLocation.Y += 25f; // Lowers the sprite down vertically
