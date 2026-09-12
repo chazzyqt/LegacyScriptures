@@ -5,7 +5,7 @@ using LegacyScriptures.Content.Projectiles;
 
 namespace LegacyScriptures.Content.Buffs
 {
-    public class axeoffirsttarnishedBuff : ModBuff
+    public class bladesoftarnishedBuff : ModBuff
     {
         public override void SetStaticDefaults()
         {
