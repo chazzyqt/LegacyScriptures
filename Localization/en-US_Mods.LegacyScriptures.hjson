@@ -88,7 +88,7 @@ Items: {
 		Tooltip: ""
 	}
 
-	CustomTerraprisma: {
+	axeofthefirsttarnished: {
 		DisplayName: Axe of the First Tarnished
 		Tooltip:
 			'''
@@ -142,13 +142,13 @@ Items: {
 }
 
 Buffs: {
-	CustomTerraprismaBuff: {
+	bladesoftarnishedBuff: {
 		DisplayName: Blades of the Tarnished
 		Description: Summoned by grace. The blades of the fallen fight at your command.
 	}
 }
 
 Projectiles: {
-	CustomTerraprismaProj.DisplayName: Custom Terraprisma Proj
+	bladesoftarnishedProj.DisplayName: bladesoftarnishedProj
 	heatflarebeam.DisplayName: heatflarebeam
 }
