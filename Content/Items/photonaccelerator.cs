@@ -44,8 +44,12 @@ namespace LegacyScriptures.Content.Items
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(ItemID.DirtBlock, 10);
-			recipe.AddTile(TileID.WorkBenches);
+			recipe.AddIngredient(ModContent.ItemType<corep90>(), 1);
+			recipe.AddIngredient(ItemID.Megashark, 1);
+			recipe.AddIngredient(ItemID.SoulofMight, 5);
+			recipe.AddIngredient(ItemID.SoulofFright, 12);
+			recipe.AddIngredient(ItemID.SoulofSight, 12);
+			recipe.AddTile(TileID.MythrilAnvil);
 			recipe.Register();
 		}
 

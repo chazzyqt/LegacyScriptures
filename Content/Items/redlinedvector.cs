@@ -44,8 +44,12 @@ namespace LegacyScriptures.Content.Items
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(ItemID.DirtBlock, 10);
-			recipe.AddTile(TileID.WorkBenches);
+			recipe.AddIngredient(ModContent.ItemType<photonaccelerator>(), 1);
+			recipe.AddIngredient(ItemID.ChainGun, 1);
+			recipe.AddIngredient(ItemID.ShroomiteBar, 15);
+			recipe.AddIngredient(ItemID.HallowedBar, 20);
+			recipe.AddIngredient(ItemID.Nanites, 150);
+			recipe.AddTile(TileID.MythrilAnvil);
 			recipe.Register();
 		}
 

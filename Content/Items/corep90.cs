@@ -44,9 +44,18 @@ namespace LegacyScriptures.Content.Items
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(ItemID.DirtBlock, 10);
-			recipe.AddTile(TileID.WorkBenches);
+			recipe.AddIngredient(ItemID.Minishark, 1);
+			recipe.AddIngredient(ItemID.Musket, 1);
+			recipe.AddIngredient(ItemID.DemoniteBar, 10);
+			recipe.AddTile(TileID.Anvils);
 			recipe.Register();
+
+			Recipe recipe2 = CreateRecipe();
+			recipe2.AddIngredient(ItemID.Minishark, 1);
+			recipe2.AddIngredient(ItemID.TheUndertaker, 1);
+			recipe2.AddIngredient(ItemID.CrimtaneBar, 10);
+			recipe2.AddTile(TileID.Anvils);
+			recipe2.Register();
 		}
 
 		public override Vector2? HoldoutOffset()

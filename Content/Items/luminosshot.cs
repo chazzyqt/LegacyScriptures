@@ -39,8 +39,12 @@ namespace LegacyScriptures.Content.Items
 		public override void AddRecipes()
 		{
 			Recipe recipe = CreateRecipe();
-			recipe.AddIngredient(ItemID.DirtBlock, 10);
-			recipe.AddTile(TileID.WorkBenches);
+			recipe.AddIngredient(ModContent.ItemType<redlinedvector>(), 1);
+			recipe.AddIngredient(ItemID.LaserMachinegun, 1);
+			recipe.AddIngredient(ItemID.LunarBar, 12);
+			recipe.AddIngredient(ItemID.FragmentVortex, 15);
+			recipe.AddIngredient(ItemID.FragmentSolar, 15);
+			recipe.AddTile(TileID.LunarCraftingStation);
 			recipe.Register();
 		}
 
