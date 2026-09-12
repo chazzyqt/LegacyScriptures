@@ -85,55 +85,57 @@ Items: {
 
 	ArmorReforgeKit: {
 		DisplayName: Armor Reforge Kit
-		Tooltip: 
-			'''
-			
-			'''
+		Tooltip: ""
 	}
 
 	CustomTerraprisma: {
-		DisplayName: Custom Terraprisma
-		Tooltip: Dont expect the swords to be in formation.
+		DisplayName: Axe of the First Tarnished
+		Tooltip:
+			'''
+			Summons blades of the fallen tarnished that charge with reckless abandon.
+			The heavy, blood-stained standard of a chieftain who fought until the crown was broken.
+			[c/FF3333:Dont expect the swords to be in formation. WIP]
+			'''
 	}
 
 	havoc: {
 		DisplayName: Havoc
-		Tooltip: 
+		Tooltip:
 			'''
 			15% chance to save ammo
-			Continuously firing this weapon ramps up its damage, up to 3.0x the base damage.
+			Continuously firing this weapon ramps up its damage, up to [c/FF3333:3.0x] the base damage.
 			Each sustained burst drags the target one step closer to absolute zero.
 			'''
 	}
 
 	novamalevolence: {
 		DisplayName: Nova's Malevolence
-		Tooltip: 
+		Tooltip:
 			'''
 			10% chance to save ammo
-			Continuously firing this weapon ramps up its damage, up to 7.5x the base damage.
+			Continuously firing this weapon ramps up its damage, up to [c/FF3333:7.5x] the base damage.
 			Born from an absolute vacuum. It starves the air, swallows the light, and leaves nothing behind.
 			'''
 	}
 
 	luminosshot: {
 		DisplayName: Luminos Shot
-		Tooltip: 
+		Tooltip:
 			'''
 			33% chance to save ammo
 			Consumes 5 mana per shot to fire an additional laser that deals 75% of the gun's damage.
-			Without mana, it will shoot like a normal gun without the laser.
+			[c/FF3333:Without mana, it will shoot like a normal gun without the laser.]
 			Harnesses a concentrated beam of solar radiance.
 			'''
 	}
 
 	heatflare: {
 		DisplayName: Heatflare
-		Tooltip: 
+		Tooltip:
 			'''
 			25% chance to save ammo
 			Consumes 10 mana per shot to fire a charged laser beam that deals 150% of the gun's damage.
-			Without mana, it will shoot like a normal gun without the laser.
+			[c/FF3333:Without mana, it will shoot like a normal gun without the laser.]
 			A contained supernova barrel-wrapped for your convenience.
 			'''
 	}
@@ -141,8 +143,8 @@ Items: {
 
 Buffs: {
 	CustomTerraprismaBuff: {
-		DisplayName: Custom Terraprisma Buff
-		Description: Mods.LegacyScriptures.Buffs.CustomTerraprismaBuff.Description
+		DisplayName: Blades of the Tarnished
+		Description: Summoned by grace. The blades of the fallen fight at your command.
 	}
 }
 
