@@ -29,7 +29,7 @@ namespace LegacyScriptures.Content.Items
             Item.value = Item.buyPrice(gold: 10);
             Item.rare = ItemRarityID.Red;
             Item.UseSound = SoundID.Item82;
-            Item.shoot = ProjectileType<axeoffirsttarnishedProj>();
+            Item.shoot = ProjectileType<bladesoftarnishedProj>();
             Item.DamageType = DamageClass.Summon;
             Item.buffType = BuffType<axeoffirsttarnishedBuff>();
         }
