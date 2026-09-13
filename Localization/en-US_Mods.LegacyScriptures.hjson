@@ -123,8 +123,8 @@ Items: {
 		Tooltip:
 			'''
 			33% chance to save ammo
-			Consumes 5 mana per shot to fire an additional laser that deals 75% of the gun's damage.
-			[c/FF3333:Without mana, it will shoot like a normal gun without the laser.]
+			Consumes 6 mana per shot to fire an additional laser that deals 75% of the gun's damage.
+			[c/FF3333:Mana cost cannot be reduced.]
 			Harnesses a concentrated beam of solar radiance.
 			'''
 	}
@@ -134,8 +134,8 @@ Items: {
 		Tooltip:
 			'''
 			25% chance to save ammo
-			Consumes 10 mana per shot to fire a charged laser beam that deals 150% of the gun's damage.
-			[c/FF3333:Without mana, it will shoot like a normal gun without the laser.]
+			Consumes 18 mana per shot to fire a charged laser beam that deals 150% of the gun's damage.
+			[c/FF3333:Mana cost cannot be reduced.]
 			A contained supernova barrel-wrapped for your convenience.
 			'''
 	}
