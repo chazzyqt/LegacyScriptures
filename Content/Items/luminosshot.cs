@@ -70,9 +70,12 @@ namespace LegacyScriptures.Content.Items
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
-			int manaCost = 6;
+			int manaCost = 2;
 			if (player.CheckMana(manaCost, pay: true))
     		{
+				player.statMana -= manaCost;
+				player.manaRegenDelay = (int)player.maxRegenDelay;
+
 				int laserType = ProjectileID.LaserMachinegunLaser;
 				float laserSpeed = 16f; 
 				Vector2 laserVelocity = Vector2.Normalize(velocity) * laserSpeed;
@@ -82,7 +85,7 @@ namespace LegacyScriptures.Content.Items
 
 				Projectile.NewProjectile(source, position, laserVelocity, laserType, laserDamage, knockback, player.whoAmI);
 			}
-            return true; 
+            return false; 
         }
 
 		public override bool PreDrawInWorld(SpriteBatch spriteBatch, Color lightColor, Color alphaColor, ref float rotation, ref float scale, int whoAmI)

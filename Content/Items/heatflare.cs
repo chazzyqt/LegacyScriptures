@@ -61,18 +61,21 @@ namespace LegacyScriptures.Content.Items
 
         public override bool CanConsumeAmmo(Item ammo, Player player)
         {
-            return Main.rand.NextFloat() >= 0.10f;//
+            return Main.rand.NextFloat() >= 0.10f;
         }
 
 		public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             int laserType = ModContent.ProjectileType<heatflarebeam>();
-            int manaCost = 18;
+            int manaCost = 10;
 
-            bool hasMana = player.CheckMana(manaCost, pay: true);
+            bool hasMana = player.statMana >= manaCost;
 
             if (hasMana)
             {
+                player.statMana -= manaCost;
+                player.manaRegenDelay = (int)player.maxRegenDelay;
+
                 if (player.ownedProjectileCounts[laserType] < 1)
                 {
                     Projectile laser = Projectile.NewProjectileDirect(source, position, velocity, laserType,
@@ -94,7 +97,6 @@ namespace LegacyScriptures.Content.Items
                 }
             }
 
-            // Bullet Spread Logic: Continues firing bullets
             float numberProjectiles = 2;
             float rotation = MathHelper.ToRadians(0.33f);
             Vector2 spawnPosition = position + Vector2.Normalize(velocity) * 45f;

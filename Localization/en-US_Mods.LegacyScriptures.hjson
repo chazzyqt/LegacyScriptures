@@ -85,7 +85,7 @@ Items: {
 
 	ArmorReforgeKit: {
 		DisplayName: Armor Reforge Kit
-		Tooltip: 
+		Tooltip:
 			'''
 			Right-click on armor pieces to reforge them
 			Now why would you want to reforge a vanity set?
