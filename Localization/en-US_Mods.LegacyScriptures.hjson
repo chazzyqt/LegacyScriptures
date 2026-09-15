@@ -128,8 +128,7 @@ Items: {
 		Tooltip:
 			'''
 			33% chance to save ammo
-			Consumes 6 mana per shot to fire an additional laser that deals 75% of the gun's damage.
-			[c/FF3333:Mana cost cannot be reduced.]
+			Consumes 4 mana per shot to fire an additional laser that deals 75% of the gun's damage.
 			Harnesses a concentrated beam of solar radiance.
 			'''
 	}
@@ -138,9 +137,8 @@ Items: {
 		DisplayName: Heatflare
 		Tooltip:
 			'''
-			25% chance to save ammo
-			Consumes 18 mana per shot to fire a charged laser beam that deals 150% of the gun's damage.
-			[c/FF3333:Mana cost cannot be reduced.]
+			10% chance to save ammo
+			Consumes 10 mana per shot to fire a charged laser beam that deals 150% of the gun's damage.
 			A contained supernova barrel-wrapped for your convenience.
 			'''
 	}
