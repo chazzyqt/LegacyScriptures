@@ -142,6 +142,11 @@ Items: {
 			A contained supernova barrel-wrapped for your convenience.
 			'''
 	}
+
+	nightglowstaff: {
+		Tooltip: ""
+		DisplayName: nightglowstaff
+	}
 }
 
 Buffs: {
@@ -154,4 +159,5 @@ Buffs: {
 Projectiles: {
 	bladesoftarnishedProj.DisplayName: bladesoftarnishedProj
 	heatflarebeam.DisplayName: heatflarebeam
+	nightglowminion.DisplayName: nightglowminion
 }
