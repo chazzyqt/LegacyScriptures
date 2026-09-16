@@ -65,7 +65,7 @@ namespace LegacyScriptures.Content.Projectiles
             {
                 float fadeProgress = (float)y / frameRect.Height; 
                 float stripAlphaMultiplier = MathHelper.Clamp(fadeProgress * 1.5f, 0f, 1f); 
-                
+
                 Rectangle sliceRect = new Rectangle(frameRect.X, frameRect.Y + y, frameRect.Width, Math.Min(sliceHeight, frameRect.Height - y));
                 Vector2 sliceDrawPos = drawPosition + new Vector2(0f, y - origin.Y + (sliceRect.Height / 2f));
                 Color stripColor = Color.White * stripAlphaMultiplier * (1f - Projectile.alpha / 255f);
@@ -80,11 +80,11 @@ namespace LegacyScriptures.Content.Projectiles
 
             if (!player.active || player.dead)
             {
-                player.ClearBuff(ModContent.BuffType<bladesoftarnishedBuff>());
+                player.ClearBuff(ModContent.BuffType<eternallanternbuff>());
                 return;
             }
 
-            if (player.HasBuff(ModContent.BuffType<bladesoftarnishedBuff>()))
+            if (player.HasBuff(ModContent.BuffType<eternallanternbuff>()))
             {
                 Projectile.timeLeft = 2;
             }
