@@ -21,6 +21,7 @@ namespace LegacyScriptures.Content.Items
 			Item.damage = 148;
             Item.DamageType = DamageClass.Summon;
             Item.knockBack = 0.5f;
+			Item.mana = 14;
 
 			Item.width = 20;
             Item.height = 20;
