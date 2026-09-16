@@ -145,7 +145,7 @@ Items: {
 
 	eternallantern: {
 		DisplayName: Eternal Lantern
-		Tooltip: 
+		Tooltip:
 			'''
 			A spectral lantern forged in an forgotten realm.
 			Summon a spectral lantern that lashes out with ghostly, restless wisps.
