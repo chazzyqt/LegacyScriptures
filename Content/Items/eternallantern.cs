@@ -34,12 +34,26 @@ namespace LegacyScriptures.Content.Items
             Item.noMelee = true;
 
 			Item.value = Item.buyPrice(0, 10, 0, 0);
-            Item.rare = ItemRarityID.Cyan;
+            Item.rare = ItemRarityID.Red;
 
 			Item.UseSound = SoundID.Item82;
 			Item.shoot = ModContent.ProjectileType<eternallanternminion>();
 			Item.buffType = ModContent.BuffType<eternallanternbuff>();
 		}
+
+		public override void AddRecipes()
+        {
+            Recipe recipe = CreateRecipe();
+			recipe.AddIngredient(ItemID.FairyQueenMagicItem, 1);
+			recipe.AddIngredient(ItemID.WispinaBottle, 1);
+			recipe.AddIngredient(ItemID.LunarBar, 8);
+			recipe.AddIngredient(ItemID.SoulofMight, 8);
+			recipe.AddIngredient(ItemID.FragmentNebula, 12);
+			recipe.AddIngredient(ItemID.Ectoplasm, 30);
+			recipe.AddIngredient(ItemID.FragmentStardust, 30);
+			recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.Register();
+        }
 
 		public override void HoldItem(Player player)
 		{
