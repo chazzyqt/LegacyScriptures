@@ -142,6 +142,15 @@ Items: {
 			A contained supernova barrel-wrapped for your convenience.
 			'''
 	}
+
+	eternallantern: {
+		DisplayName: Eternal Lantern
+		Tooltip: 
+			'''
+			A spectral lantern forged in an forgotten realm.
+			Summon a spectral lantern that lashes out with ghostly, restless wisps.
+			'''
+	}
 }
 
 Buffs: {
@@ -149,9 +158,15 @@ Buffs: {
 		DisplayName: Blades of the Tarnished
 		Description: Summoned by grace. The blades of the fallen fight at your command.
 	}
+
+	eternallanternbuff: {
+		DisplayName: Eternal Chains
+		Description: Wisps writhe within the glass, converting raw spiritual energy into searing illumination and defensive protection.
+	}
 }
 
 Projectiles: {
 	bladesoftarnishedProj.DisplayName: bladesoftarnishedProj
 	heatflarebeam.DisplayName: heatflarebeam
+	eternallanternminion.DisplayName: eternallanternminion
 }
