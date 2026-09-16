@@ -33,7 +33,7 @@ namespace LegacyScriptures.Content.Items
             Item.noMelee = true;
 
 			Item.value = Item.buyPrice(0, 10, 0, 0);
-            Item.rare = ItemRarityID.LightPurple;
+            Item.rare = ItemRarityID.Cyan;
 
 			Item.UseSound = SoundID.Item82;
 			Item.shoot = ModContent.ProjectileType<eternallanternminion>();
