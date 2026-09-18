@@ -281,7 +281,6 @@ namespace LegacyScriptures.Content.Utilities
                 Add(availableReforges, () => { reforgeName = "Oracle"; reforgeCritBonus = 5; reforgeDefenseBonus = -4; moonlordTier(); }, 10);
                 Add(availableReforges, () => { reforgeName = "Transient"; reforgeMoveSpeedBonus = 0.10f; reforgeDefenseBonus = -4; moonlordTier(); }, 10);
                 Add(availableReforges, () => { reforgeName = "Commanding"; reforgeMinionSlots = 2; reforgeDamageBonus = -0.25f; moonlordTier(); }, 10);
-                // --- EXTRA I-FRAMES REFORGE ---
                 Add(availableReforges, () => { reforgeName = "Elusive"; reforgeExtraIFrameBonus = 15; moonlordTier(); }, 10); // 0.25 Extra i-frames
             }
 
@@ -308,22 +307,20 @@ namespace LegacyScriptures.Content.Utilities
                 }
             }
 
-            // Capture the base rarity the very first time this item is reforged
             if (originalRare == -1)
             {
                 originalRare = item.rare;
             }
 
-            // Error catch: If the base rarity is 10 (Red) or higher, cap the rarity bonus to 1 instead of 2
             if (originalRare >= 9 && reforgeRarityBonus > 1)
             {
                 reforgeRarityBonus = 1;
             }
 
-            // Cleanly calculate rarity based on the saved baseline instead of compounding
             item.rare = originalRare + reforgeRarityBonus;
 
-            CombatText.NewText(player.getRect(), Color.Gold, $"Reforged: {reforgeName}!", true);
+            CombatText.NewText(player.getRect(), Color.Gold, $"Reforged: {reforgeName}!");
+
             item.stack++;
         }
     }

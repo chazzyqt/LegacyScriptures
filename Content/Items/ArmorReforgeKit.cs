@@ -20,11 +20,25 @@ namespace LegacyScriptures.Content.Items
             Item.useAnimation = 15;
         }
 
+        public override void AddRecipes()
+        {
+            Recipe recipe = CreateRecipe(20);
+            recipe.AddIngredient(ItemID.IronBar, 5);
+            recipe.AddRecipeGroup(RecipeGroupID.Wood, 5);
+			recipe.AddTile(TileID.Anvils);
+            recipe.Register();
+
+            Recipe recipe2 = CreateRecipe(20);
+            recipe2.AddIngredient(ItemID.LeadBar, 5);
+            recipe2.AddRecipeGroup(RecipeGroupID.Wood, 5);
+			recipe2.AddTile(TileID.Anvils);
+            recipe2.Register();
+        }
+
         public override bool CanUseItem(Player player)
         {
             var reforgePlayer = player.GetModPlayer<ReforgePlayer>();
 
-            // If trying to turn it on, check if inventory UI is open
             if (!reforgePlayer.IsArmorReforgingActive && !Main.playerInventory)
             {
                 Main.NewText("Please open inventory to reforge armor.", 255, 100, 100);
