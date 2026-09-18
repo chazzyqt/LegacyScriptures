@@ -10,7 +10,7 @@ using Terraria;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
 using Terraria.ID;
-using LegacyScriptures.Content.Players;
+using LegacyScriptures.Content.Utilities;
 using LegacyScriptures.Content.Items;
 
 namespace LegacyScriptures

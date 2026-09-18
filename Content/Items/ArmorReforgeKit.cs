@@ -1,12 +1,12 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
-using LegacyScriptures.Content.Players;
+using LegacyScriptures.Content.Utilities;
 using Microsoft.Xna.Framework;
 
 namespace LegacyScriptures.Content.Items
 {
-    public class ArmorReforgeKit : ModItem
+    public class armorReforgekit : ModItem
     {
         public override void SetDefaults()
         {
@@ -19,20 +19,6 @@ namespace LegacyScriptures.Content.Items
             Item.useTime = 15;
             Item.useAnimation = 15;
         }
-
-        /*public override bool CanUseItem(Player player)
-        {
-            var reforgePlayer = player.GetModPlayer<ReforgePlayer>();
-
-            reforgePlayer.IsArmorReforgingActive = !reforgePlayer.IsArmorReforgingActive;
-            
-            Main.NewText(reforgePlayer.IsArmorReforgingActive 
-                ? "Armor Reforging Mode: ON. Right-click an armor piece to reforge." 
-                : "Armor Reforging Mode: OFF.", 50, 255, 50);
-
-            // Return false so it doesn't consume the kit just from toggling the mode on/off in your hand
-            return false;
-        }*/
 
         public override bool CanUseItem(Player player)
         {
