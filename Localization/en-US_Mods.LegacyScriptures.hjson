@@ -151,6 +151,11 @@ Items: {
 			Summon a spectral lantern that lashes out with ghostly, restless wisps.
 			'''
 	}
+
+	armorReforgekit: {
+		DisplayName: armor Reforgekit
+		Tooltip: ""
+	}
 }
 
 Buffs: {

@@ -180,7 +180,7 @@ namespace LegacyScriptures.Content.Utilities
         {
             Player player = Main.LocalPlayer;
             var reforgePlayer = player.GetModPlayer<ReforgePlayer>();
-            bool hasKit = player.HasItem(ModContent.ItemType<ArmorReforgeKit>());
+            bool hasKit = player.HasItem(ModContent.ItemType<armorReforgekit>());
             
             return reforgePlayer.IsArmorReforgingActive && IsArmor(item) && hasKit;
         }
@@ -192,7 +192,7 @@ namespace LegacyScriptures.Content.Utilities
 
         public override void RightClick(Item item, Player player)
         {
-            player.ConsumeItem(ModContent.ItemType<ArmorReforgeKit>());
+            player.ConsumeItem(ModContent.ItemType<armorReforgekit>());
 
             reforgeLifeBonus = 0;
             reforgeManaBonus = 0;

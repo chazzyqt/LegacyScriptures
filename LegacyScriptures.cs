@@ -117,7 +117,7 @@ namespace LegacyScriptures
                 return;
             }
 
-            int kitType = ModContent.ItemType<ArmorReforgeKit>();
+            int kitType = ModContent.ItemType<armorReforgekit>();
 
             // Check if kit exists in inventory OR is currently picked up on the mouse cursor
             bool hasKitInInventory = player.HasItem(kitType);
