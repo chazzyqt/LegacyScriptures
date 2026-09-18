@@ -160,7 +160,7 @@ namespace LegacyScriptures.Content.Utilities
                 List<string> statText = new List<string>();
                 if (reforgeLifeBonus != 0) statText.Add($"{(reforgeLifeBonus > 0 ? "+" : "")}{reforgeLifeBonus} Increased Max HP");
                 if (reforgeManaBonus != 0) statText.Add($"{(reforgeManaBonus > 0 ? "+" : "")}{reforgeManaBonus} Increased Max Mana");
-                if (reforgeDefenseBonus != 0) statText.Add($"{(reforgeDefenseBonus > 0 ? "+" : "")}{reforgeDefenseBonus} Additional Defense");
+                if (reforgeDefenseBonus != 0) statText.Add($"{(reforgeDefenseBonus > 0 ? "+" : "")}{reforgeDefenseBonus} Defense");
                 if (reforgeDamageBonus != 0f) statText.Add($"{(reforgeDamageBonus > 0 ? "+" : "")}{(int)(reforgeDamageBonus * 100)}% Damage");
                 if (reforgeCritBonus != 0) statText.Add($"{(reforgeCritBonus > 0 ? "+" : "")}{reforgeCritBonus}% Critical Chance");
                 if (reforgeMoveSpeedBonus != 0f) statText.Add($"{(reforgeMoveSpeedBonus > 0 ? "+" : "")}{(int)(reforgeMoveSpeedBonus * 100)}% Movement Speed");
@@ -253,8 +253,8 @@ namespace LegacyScriptures.Content.Utilities
             {
                 Action hardmodeTier = () => reforgeRarityBonus = 1;
 
-                Add(availableReforges, () => { reforgeName = "Lethal"; reforgeCritBonus = 3; reforgeDefenseBonus = -2; hardmodeTier(); }, 15);
-                Add(availableReforges, () => { reforgeName = "Hasty"; reforgeMoveSpeedBonus = 0.06f; reforgeDefenseBonus = -2; hardmodeTier(); }, 15);
+                Add(availableReforges, () => { reforgeName = "Lethal"; reforgeCritBonus = 3; reforgeDefenseBonus = -1; hardmodeTier(); }, 15);
+                Add(availableReforges, () => { reforgeName = "Hasty"; reforgeMoveSpeedBonus = 0.06f; reforgeDefenseBonus = -1; hardmodeTier(); }, 15);
                 Add(availableReforges, () => { reforgeName = "Leading"; reforgeMinionSlots = 1; hardmodeTier(); }, 15);
             }
 
@@ -263,9 +263,9 @@ namespace LegacyScriptures.Content.Utilities
                 Action plantTier = () => reforgeRarityBonus = 2;
 
                 Add(availableReforges, () => { reforgeName = "Bastion"; reforgeDefenseBonus = 8; plantTier(); }, 10);
-                Add(availableReforges, () => { reforgeName = "Vicious"; reforgeDamageBonus = 0.04f; reforgeDefenseBonus = -3; plantTier(); }, 10);
-                Add(availableReforges, () => { reforgeName = "Fatal"; reforgeCritBonus = 4; reforgeDefenseBonus = -3; plantTier(); }, 10);
-                Add(availableReforges, () => { reforgeName = "Zephyr"; reforgeMoveSpeedBonus = 0.08f; reforgeDefenseBonus = -3; plantTier(); }, 10);
+                Add(availableReforges, () => { reforgeName = "Vicious"; reforgeDamageBonus = 0.04f; reforgeDefenseBonus = -2; plantTier(); }, 10);
+                Add(availableReforges, () => { reforgeName = "Fatal"; reforgeCritBonus = 4; reforgeDefenseBonus = -2; plantTier(); }, 10);
+                Add(availableReforges, () => { reforgeName = "Zephyr"; reforgeMoveSpeedBonus = 0.08f; reforgeDefenseBonus = -2; plantTier(); }, 10);
             }
             
             if (NPC.downedMoonlord)
@@ -275,12 +275,12 @@ namespace LegacyScriptures.Content.Utilities
                 Add(availableReforges, () => { reforgeName = "Vigorous"; reforgeLifeBonus = 25; moonlordTier(); }, 10);
                 Add(availableReforges, () => { reforgeName = "Mastiff"; reforgeLifeBonus = 500; reforgeDefenseBonus = -50; moonlordTier(); }, 10);
                 Add(availableReforges, () => { reforgeName = "Boundless"; reforgeManaBonus = 50; moonlordTier(); }, 10);
-                Add(availableReforges, () => { reforgeName = "Impenetrable"; reforgeDefenseBonus = 16; reforgeLifeBonus = -20; moonlordTier(); }, 10);
-                Add(availableReforges, () => { reforgeName = "Bulwark"; reforgeDefenseBonus = 24; reforgeLifeBonus = -30; moonlordTier(); }, 10);
-                Add(availableReforges, () => { reforgeName = "Apocalyptic"; reforgeDamageBonus = 0.05f; reforgeDefenseBonus = -4; moonlordTier(); }, 10);
-                Add(availableReforges, () => { reforgeName = "Oracle"; reforgeCritBonus = 5; reforgeDefenseBonus = -4; moonlordTier(); }, 10);
-                Add(availableReforges, () => { reforgeName = "Transient"; reforgeMoveSpeedBonus = 0.10f; reforgeDefenseBonus = -4; moonlordTier(); }, 10);
-                Add(availableReforges, () => { reforgeName = "Commanding"; reforgeMinionSlots = 2; reforgeDamageBonus = -0.25f; moonlordTier(); }, 10);
+                Add(availableReforges, () => { reforgeName = "Impenetrable"; reforgeDefenseBonus = 16; reforgeLifeBonus = -5; moonlordTier(); }, 10);
+                Add(availableReforges, () => { reforgeName = "Bulwark"; reforgeDefenseBonus = 24; reforgeLifeBonus = -10; moonlordTier(); }, 10);
+                Add(availableReforges, () => { reforgeName = "Apocalyptic"; reforgeDamageBonus = 0.05f; reforgeDefenseBonus = -2; moonlordTier(); }, 10);
+                Add(availableReforges, () => { reforgeName = "Oracle"; reforgeCritBonus = 5; reforgeDefenseBonus = -2; moonlordTier(); }, 10);
+                Add(availableReforges, () => { reforgeName = "Transient"; reforgeMoveSpeedBonus = 0.10f; reforgeDefenseBonus = -2; moonlordTier(); }, 10);
+                Add(availableReforges, () => { reforgeName = "Commanding"; reforgeMinionSlots = 2; reforgeDamageBonus = -0.1f; moonlordTier(); }, 10);
                 Add(availableReforges, () => { reforgeName = "Elusive"; reforgeExtraIFrameBonus = 15; moonlordTier(); }, 10); // 0.25 Extra i-frames
             }
 
